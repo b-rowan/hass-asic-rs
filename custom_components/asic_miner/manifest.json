@@ -6,6 +6,8 @@
   "dependencies": [],
   "documentation": "https://github.com/b-rowan/hass-asic-rs",
   "iot_class": "local_polling",
-  "requirements": ["pyasic-rs>=0.4.2"],
-  "version": "0.1.0"
+  "requirements": [
+    "pyasic-rs>=0.4.2"
+  ],
+  "version": "0.1.1"
 }

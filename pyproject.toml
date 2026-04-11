@@ -1,6 +1,6 @@
 [project]
 name = "hass-asic-rs"
-version = "0.1.0"
+version = "0.1.1"
 description = "A home assistant integration for asic-rs"
 authors = [
     {name = "Brett Rowan",email = "121075405+b-rowan@users.noreply.github.com"}
