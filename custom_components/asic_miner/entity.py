@@ -23,6 +23,7 @@ class MinerEntity(CoordinatorEntity[MinerCoordinator]):
             manufacturer=data.device_info.make,
             model=data.device_info.model,
             sw_version=data.firmware_version,
+            configuration_url=f"http://{coordinator.ip}",
         )
 
     @property
