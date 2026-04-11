@@ -2,6 +2,12 @@
   "config": {
     "step": {
       "user": {
+        "menu_options": {
+          "manual": "Enter IP address manually",
+          "scan": "Scan network for miners"
+        }
+      },
+      "manual": {
         "title": "Add ASIC Miner",
         "description": "Enter the IP address of your ASIC miner.",
         "data": {
@@ -9,10 +15,37 @@
           "username": "Username (optional)",
           "password": "Password (optional)"
         }
+      },
+      "scan": {
+        "title": "Scan Network",
+        "description": "Enter the subnet to scan. This has been pre-filled from your network settings.",
+        "data": {
+          "subnet": "Subnet (e.g. 192.168.1.0/24)"
+        }
+      },
+      "scanning": {
+        "title": "Scanning…",
+        "description": "Scanning {subnet} for ASIC miners. This may take up to 30 seconds."
+      },
+      "pick_miner": {
+        "title": "Select Miner",
+        "description": "Choose a miner from the list of devices found on your network.",
+        "data": {
+          "selected_miner": "Miner"
+        }
+      },
+      "credentials": {
+        "title": "Credentials",
+        "description": "Enter login credentials for {host}, or leave blank if authentication is not required.",
+        "data": {
+          "username": "Username (optional)",
+          "password": "Password (optional)"
+        }
       }
     },
     "error": {
       "cannot_connect": "Failed to connect. Check the IP address and that the miner is online.",
+      "no_miners_found": "No miners were found on that subnet. Try a different range.",
       "unknown": "Unexpected error. Check the Home Assistant logs."
     },
     "abort": {
