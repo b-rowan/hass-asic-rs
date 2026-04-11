@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -19,6 +20,7 @@ class MinerEntity(CoordinatorEntity[MinerCoordinator]):
         data = coordinator.data
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, self._device_unique_id)},
+            connections={(dr.CONNECTION_NETWORK_MAC, data.mac)} if data.mac else set(),
             name=f"{data.device_info.make} {data.device_info.model}",
             manufacturer=data.device_info.make,
             model=data.device_info.model,
