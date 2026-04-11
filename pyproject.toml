@@ -1,0 +1,26 @@
+[project]
+name = "hass-asic-rs"
+version = "0.1.0"
+description = "A home assistant integration for asic-rs"
+authors = [
+    {name = "Brett Rowan",email = "121075405+b-rowan@users.noreply.github.com"}
+]
+requires-python = ">=3.14.2,<4.0"
+dependencies = [
+    "pyasic-rs>=0.4.2",
+    "homeassistant>=2026.1.0",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pre-commit (>=4.5.1,<5.0.0)"
+]

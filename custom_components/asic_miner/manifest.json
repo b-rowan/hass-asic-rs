@@ -1,0 +1,11 @@
+{
+  "domain": "asic_miner",
+  "name": "ASIC Miner",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/b-rowan/hass-asic-rs",
+  "iot_class": "local_polling",
+  "requirements": ["pyasic-rs>=0.1.0"],
+  "version": "0.1.0"
+}
