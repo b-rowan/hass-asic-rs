@@ -7,7 +7,7 @@
   "documentation": "https://github.com/b-rowan/hass-asic-rs",
   "iot_class": "local_polling",
   "requirements": [
-    "pyasic-rs>=0.4.2"
+    "pyasic-rs>=0.5.3"
   ],
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
