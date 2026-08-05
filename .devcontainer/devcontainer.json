@@ -1,5 +1,5 @@
 {
-  "name": "ASIC Miner HA Integration",
+  "name": "hasica HA Integration",
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
@@ -9,10 +9,10 @@
   "appPort": ["8123:8123"],
   "postStartCommand": "bash devcontainer_bootstrap",
   "runArgs": ["-e", "GIT_EDITOR=code --wait", "--privileged"],
-  "workspaceFolder": "/workspaces/hass-asic-rs",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/hass-asic-rs,type=bind,consistency=cached",
+  "workspaceFolder": "/workspaces/hasica",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/hasica,type=bind,consistency=cached",
   "containerEnv": {
-    "WORKSPACE_DIRECTORY": "/workspaces/hass-asic-rs"
+    "WORKSPACE_DIRECTORY": "/workspaces/hasica"
   },
   "mounts": [
     "type=volume,target=/var/lib/docker",

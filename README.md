@@ -1,10 +1,10 @@
-# hass-asic-rs
+# hasica
 
-[![GitHub Release](https://img.shields.io/github/v/release/b-rowan/hass-asic-rs?style=for-the-badge)](https://github.com/b-rowan/hass-asic-rs/releases)
-[![HACS](https://img.shields.io/badge/HACS-Custom-orange?style=for-the-badge)](https://my.home-assistant.io/redirect/hacs_repository/?owner=b-rowan&repository=hass-asic-rs&category=integration)
+[![GitHub Release](https://img.shields.io/github/v/release/exergyheat/hasica?style=for-the-badge)](https://github.com/exergyheat/hasica/releases)
+[![HACS](https://img.shields.io/badge/HACS-Custom-orange?style=for-the-badge)](https://my.home-assistant.io/redirect/hacs_repository/?owner=exergyheat&repository=hasica&category=integration)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-orange?style=for-the-badge)](https://conventionalcommits.org)
 
-A Home Assistant integration for ASIC miners, powered by [asic-rs](https://github.com/256-Foundation/asic-rs) via the `pyasic-rs` Python bindings.
+A Home Assistant integration for ASIC miners, powered by [asic-rs](https://github.com/256-Foundation/asic-rs) via the `pyasic-rs` Python bindings. Exergy's fork of [b-rowan/hass-asic-rs](https://github.com/b-rowan/hass-asic-rs).
 
 ## Features
 
@@ -25,21 +25,21 @@ A Home Assistant integration for ASIC miners, powered by [asic-rs](https://githu
 1. Open HACS in Home Assistant.
 2. Go to **Integrations** and click the three-dot menu in the top right.
 3. Select **Custom repositories**.
-4. Add `https://github.com/b-rowan/hass-asic-rs` with category **Integration**.
-5. Search for **ASIC Miner** and install it.
+4. Add `https://github.com/exergyheat/hasica` with category **Integration**.
+5. Search for **hasica** and install it.
 6. Restart Home Assistant.
 
 ### Manual
 
-1. Download the [latest release](https://github.com/b-rowan/hass-asic-rs/releases/latest).
-2. Copy the `custom_components/asic_miner` folder into your HA config directory at `<config>/custom_components/asic_miner`.
+1. Download the [latest release](https://github.com/exergyheat/hasica/releases/latest).
+2. Copy the `custom_components/hasica` folder into your HA config directory at `<config>/custom_components/hasica`.
 3. Restart Home Assistant.
 
 ---
 
 ## Setup
 
-After installation, go to **Settings → Devices & Services → Add Integration** and search for **ASIC Miner**.
+After installation, go to **Settings → Devices & Services → Add Integration** and search for **hasica**.
 
 You will be offered two setup options:
 

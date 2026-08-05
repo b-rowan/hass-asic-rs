@@ -1,13 +1,13 @@
 {
-  "domain": "asic_miner",
-  "name": "ASIC Miner",
+  "domain": "hasica",
+  "name": "hasica",
   "codeowners": [],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/b-rowan/hass-asic-rs",
+  "documentation": "https://github.com/exergyheat/hasica",
   "iot_class": "local_polling",
   "requirements": [
-    "pyasic-rs>=0.5.3"
+    "pyasic-rs>=0.7.3,<0.8"
   ],
   "version": "0.1.2"
 }

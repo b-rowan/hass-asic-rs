@@ -36,7 +36,7 @@ filter_unconventional = true
 require_conventional = false
 split_commits = false
 commit_preprocessors = [
-    { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/b-rowan/hass-asic-rs/issues/${2}))"},
+    { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/exergyheat/hasica/issues/${2}))"},
 #    { pattern = '.*', replace_command = 'typos --write-changes -' },
 ]
 protect_breaking_commits = false
@@ -69,8 +69,8 @@ sort_commits = "oldest"
 recurse_submodules = false
 
 [remote.github]
-owner = "b-rowan"
-repo = "hass-asic-rs"
+owner = "exergyheat"
+repo = "hasica"
 
 [bump]
 features_always_bump_minor = false
