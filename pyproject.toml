@@ -7,8 +7,8 @@ authors = [
 ]
 requires-python = ">=3.14.2,<4.0"
 dependencies = [
-    "pyasic-rs>=0.5.3",
-    "homeassistant>=2026.1.0",
+    "pyasic-rs>=0.8.0",
+    "homeassistant>=2026.8.0",
 ]
 
 

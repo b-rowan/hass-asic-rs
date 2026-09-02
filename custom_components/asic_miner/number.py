@@ -8,7 +8,7 @@ from homeassistant.const import UnitOfPower
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from pyasic_rs.data import TuningTargetPower
+from pyasic_rs.data import TuningTarget
 
 from .const import DOMAIN
 from .coordinator import MinerCoordinator
@@ -35,7 +35,7 @@ class PowerLimitNumber(MinerEntity, NumberEntity):
         data = self.coordinator.data
         if data is None:
             return None
-        if isinstance(data.tuning_target, TuningTargetPower):
+        if isinstance(data.tuning_target, TuningTarget.Power):
             return data.tuning_target.watts
         return data.wattage  # fall back to current draw if no power target is set
 

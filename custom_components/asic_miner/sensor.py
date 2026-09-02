@@ -22,6 +22,7 @@ from homeassistant.const import (
 )
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from pyasic_rs.asic_rs import PoolURL
 
 from pyasic_rs.data import BoardData, MinerData, HashRateUnit
 
@@ -171,7 +172,7 @@ def _primary_pool_rejected(data: MinerData) -> int | None:
     return pool.rejected_shares if pool else None
 
 
-def _primary_pool_url(data: MinerData) -> str | None:
+def _primary_pool_url(data: MinerData) -> PoolURL | None:
     pool = _primary_pool(data)
     return pool.url if pool else None
 
@@ -221,10 +222,10 @@ def _board_sensors(board: BoardData) -> list[MinerSensorEntityDescription]:
             state_class=SensorStateClass.MEASUREMENT,
             suggested_display_precision=1,
             value_fn=lambda d, _n=n: _board_value(
-                d, _n, lambda b: b.intake_temperature
+                d, _n, lambda b: b.inlet_chip_temperature
             ),
             available_fn=lambda d, _n=n: (
-                _board_value(d, _n, lambda b: b.intake_temperature) is not None
+                _board_value(d, _n, lambda b: b.inlet_chip_temperature) is not None
             ),
         ),
         MinerSensorEntityDescription(
@@ -235,10 +236,10 @@ def _board_sensors(board: BoardData) -> list[MinerSensorEntityDescription]:
             state_class=SensorStateClass.MEASUREMENT,
             suggested_display_precision=1,
             value_fn=lambda d, _n=n: _board_value(
-                d, _n, lambda b: b.outlet_temperature
+                d, _n, lambda b: b.outlet_chip_temperature
             ),
             available_fn=lambda d, _n=n: (
-                _board_value(d, _n, lambda b: b.outlet_temperature) is not None
+                _board_value(d, _n, lambda b: b.outlet_chip_temperature) is not None
             ),
         ),
         MinerSensorEntityDescription(
