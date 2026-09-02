@@ -1,3 +1,9 @@
+## [0.1.3] - 2026-09-02
+
+### 🐛 Bug Fixes
+
+- Update to latest asic-rs
+
 ## [0.1.2] - 2026-05-27
 
 ### 🚀 Features
