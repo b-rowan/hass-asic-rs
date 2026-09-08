@@ -1,3 +1,14 @@
+## [0.2.0] - 2026-09-08
+
+### 🚀 Features
+
+- Add automatic device discovery
+- Add icons, mirroring hass-miner's base icons
+
+### 🐛 Bug Fixes
+
+- Handle offline devices with revalidate
+
 ## [0.1.3] - 2026-09-02
 
 ### 🐛 Bug Fixes
