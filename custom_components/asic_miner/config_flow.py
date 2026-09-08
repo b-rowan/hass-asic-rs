@@ -3,17 +3,16 @@
 from __future__ import annotations
 
 import asyncio
-import ipaddress
 
 import voluptuous as vol
 from homeassistant import config_entries
-from homeassistant.components.network import async_get_adapters
 from homeassistant.const import CONF_HOST, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.data_entry_flow import FlowResult
 
 from pyasic_rs import MinerFactory
 
 from .const import DOMAIN
+from .discovery import async_default_subnet, async_scan_subnet
 
 CONF_SUBNET = "subnet"
 CONF_SELECTED_MINER = "selected_miner"
@@ -32,22 +31,6 @@ STEP_CREDENTIALS_SCHEMA = vol.Schema(
         vol.Optional(CONF_PASSWORD, default=""): str,
     }
 )
-
-
-async def _default_subnet(hass) -> str:
-    """Return the local subnet from HA's network info, or a safe fallback."""
-    try:
-        adapters = await async_get_adapters(hass)
-        for adapter in adapters:
-            if adapter.get("default") and adapter.get("ipv4"):
-                ip_info = adapter["ipv4"][0]
-                network = ipaddress.IPv4Network(
-                    f"{ip_info['address']}/{ip_info['network_prefix']}", strict=False
-                )
-                return str(network)
-    except Exception:  # noqa: BLE001
-        pass
-    return "192.168.1.0/24"
 
 
 async def _connect_and_title(ip: str, username: str = "", password: str = "") -> tuple:
@@ -81,6 +64,16 @@ class AsicMinerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="user",
             menu_options=["manual", "scan"],
         )
+
+    async def async_step_integration_discovery(
+        self, discovery_info: dict[str, str]
+    ) -> FlowResult:
+        """Handle a miner found by the automatic network scan."""
+        self._selected_ip = discovery_info[CONF_HOST]
+        await self.async_set_unique_id(self._selected_ip)
+        self._abort_if_unique_id_configured()
+        self.context["title_placeholders"] = {"name": discovery_info["title"]}
+        return await self.async_step_credentials()
 
     # ── Manual path ───────────────────────────────────────────────────────
 
@@ -120,7 +113,7 @@ class AsicMinerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             self._subnet = user_input[CONF_SUBNET]
             return await self.async_step_scanning()
 
-        default = await _default_subnet(self.hass)
+        default = await async_default_subnet(self.hass)
         return self.async_show_form(
             step_id="scan",
             data_schema=vol.Schema({vol.Required(CONF_SUBNET, default=default): str}),
@@ -146,11 +139,7 @@ class AsicMinerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         """Populate self._discovered by scanning the subnet."""
         self._discovered = {}
         try:
-            factory = MinerFactory.from_subnet(subnet)
-            async for ip, miner in factory.scan_stream_with_ip():
-                if miner is not None:
-                    label = f"{miner.make} {miner.model} ({ip})"
-                    self._discovered[str(ip)] = label
+            self._discovered = await async_scan_subnet(subnet)
         except Exception:  # noqa: BLE001
             pass
 

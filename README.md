@@ -41,6 +41,10 @@ A Home Assistant integration for ASIC miners, powered by [asic-rs](https://githu
 
 After installation, go to **Settings → Devices & Services → Add Integration** and search for **ASIC Miner**.
 
+When the integration loads, it automatically scans Home Assistant's default
+IPv4 subnet. Supported miners appear as discovered integrations and must be
+confirmed before they are added.
+
 You will be offered two setup options:
 
 - **Enter IP address manually** — type the miner's IP and optional credentials.
@@ -62,6 +66,15 @@ A `docker-compose.yml` is included that runs the official HA container with the 
 ```bash
 docker compose up -d
 ```
+
+The container uses host networking so Home Assistant can inspect the computer's
+default LAN adapter and scan that subnet for supported miners. Host networking is
+available directly on Linux; Docker Desktop users must enable host networking in
+Docker Desktop settings.
+
+The Compose setup also mounts a development `configuration.yaml` that loads the
+integration at startup. This is what triggers active discovery before any miner
+has been configured.
 
 Open `http://localhost:8123` and add the integration from **Settings → Devices & Services**.
 

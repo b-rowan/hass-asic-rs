@@ -5,8 +5,8 @@ services:
     volumes:
       - ha_config:/config
       - ./custom_components:/config/custom_components:ro
-    ports:
-      - "8123:8123"
+      - ./.devcontainer/homeassistant-configuration.yaml:/config/configuration.yaml:ro
+    network_mode: host
     restart: unless-stopped
 
 volumes:

@@ -1,0 +1,10 @@
+# Development configuration used by docker-compose.yml.
+default_config:
+
+# Loading the integration starts its active LAN discovery scan.
+asic_miner:
+
+logger:
+  default: info
+  logs:
+    custom_components.asic_miner.discovery: debug
