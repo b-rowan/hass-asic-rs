@@ -9,5 +9,5 @@
   "requirements": [
     "pyasic-rs>=0.8.1"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
